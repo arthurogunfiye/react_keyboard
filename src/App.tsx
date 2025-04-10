@@ -9,19 +9,19 @@ export class App extends React.Component<State> {
     message: '',
   };
 
-  public processKeydownEvent = (keyboardEvent: KeyboardEvent) => {
+  public onDocumentKeyup = (keyboardEvent: KeyboardEvent) => {
     this.setState({
       message: `The last pressed key is [${keyboardEvent.key}]`,
     });
   };
 
   public componentDidMount(): void {
-    document.addEventListener('keyup', this.processKeydownEvent);
+    document.addEventListener('keyup', this.onDocumentKeyup);
     this.setState({ message: 'Nothing was pressed yet' });
   }
 
   public componentWillUnmount(): void {
-    document.removeEventListener('keyup', this.processKeydownEvent);
+    document.removeEventListener('keyup', this.onDocumentKeyup);
   }
 
   public render() {
